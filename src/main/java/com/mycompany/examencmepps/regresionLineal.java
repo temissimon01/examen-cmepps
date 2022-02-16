@@ -45,7 +45,12 @@ public class regresionLineal extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
-    private float RegresionLineal(int HDU){
+    public float RegresionLineal(int HDU){
+        
+        if(this.entries == null || this.entries.size() == 0){
+            return 0.0f;
+        }
+        
         int n = this.entries.size();
         
         float sum_x = 0.0f;
