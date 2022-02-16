@@ -5,6 +5,7 @@
 package com.mycompany.examencmepps;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -72,6 +73,8 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CMEPPS - Software");
+        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,17 +283,21 @@ public class Main extends javax.swing.JFrame {
         try {
 
             Object[] values = this.getInputValues();
-
-            this.addEntry(values);
-
-            jTextField1.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jTextField6.setText("");
-            jTextField7.setText("");
-            jTextField8.setText("");
+            
+            if(values[0] == null){
+                JOptionPane.showMessageDialog(this, "Valores de entrada incorrectos!", "Error de parametría", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                this.addEntry(values);
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+                jTextField6.setText("");
+                jTextField7.setText("");
+                jTextField8.setText("");
+            }
         } catch (Exception e) {
         }
 
@@ -309,7 +316,7 @@ public class Main extends javax.swing.JFrame {
             values[6] = Integer.valueOf(jTextField7.getText());
             values[7] = Float.valueOf(jTextField8.getText());
         } catch (Exception e) {
-            values[0] = 0;
+            values[0] = null;
             values[1] = 0;
             values[2] = 0;
             values[3] = "";
